@@ -1,0 +1,73 @@
+### get service details
+http://localhost:4004/odata/v4/catalogService
+
+//Metadata
+### get meta data service 
+Http://localhost:4004/odata/v4/CatalogService/$metadata
+
+### get meta data service 
+http://localhost:4004/odata/v4/CatalogService/employeeset
+
+### single record
+http://localhost:4004/odata/v4/CatalogService/employeeset/02BD2137-0890-1EEA-A6C2-BB55C197C7FB
+### create a employe data 
+POST http://localhost:4004/odata/v4/CatalogService/employeeset
+Content-Type: application/json
+
+ {
+      "nameFirst": "prashanth",
+      "nameMiddle": null,
+      "nameLast": "Spring",
+      "nameInitials": null,
+      "sex": "F",
+      "language": "E",
+      "phoneNumber": "+919928999912",
+      "email": "123@gmail.com",
+      "loginName": "SPRINGS",
+      "Currency_code": "USD",
+      "salaryAmount": 500,
+      "accountNumber": "111222333",
+      "bankId": "51",
+      "bankName": "My Bank of Antioch"
+    }
+
+### get call for recently created Record 
+ http://localhost:4004/odata/v4/CatalogService/employeeset/e58b24c7-9054-4ec2-968f-ad7849e8acc3
+
+ 
+###Update call for recently updated record
+PATCH http://localhost:4004/odata/v4/CatalogService/employeeset/47371013-b8c8-4cba-9503-dad802e8ca9b
+Content-Type: application/json
+
+{
+      "sex": "M",
+      "Currency_code": "EUR",
+      "salaryAmount": "500000"
+}
+
+### delete record 
+
+DELETE http://localhost:4004/odata/v4/CatalogService/employeeset/e58b24c7-9054-4ec2-968f-ad7849e8acc3
+
+###get all po
+http://localhost:4004/odata/v4/CatalogService/POs
+
+###get single po
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC2A052
+###get po with items details
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC2A052?$expand=Items
+
+### call boost method action
+POST http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC2A052/CatalogService.boost
+Content-Type: application/json
+
+{}
+
+### function it is get call
+ http://localhost:4004/odata/v4/CatalogService/largestOrder
+
+### get meta data service 
+Http://localhost:4004/v2/odata/v4/CatalogService/$metadata
+
+### get meta data service 
+http://localhost:4004/v2/odata/v4/CatalogService/employeeset 
