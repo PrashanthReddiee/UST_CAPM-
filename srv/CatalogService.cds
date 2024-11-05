@@ -1,11 +1,14 @@
 using { anubhav.db.master, anubhav.db.transaction } from '../db/datamodel';
 using { cappo.cds } from '../db/CDSViews';
 
-service CatalogService @(path:'CatalogService') {
+service CatalogService @(path:'CatalogService',requires:'authenicated-user') {
     
     entity bussinesspartner as projection on master.businesspartner;
     //  @readonly
-    entity employeeset as projection on master.employees;
+     entity EmployeeSet @(restrict: [ 
+                        { grant: ['READ'], to: 'Viewer', where: 'bankName = $user.BankName' },
+                        { grant: ['WRITE'], to: 'Admin' }
+                        ]) as projection on master.employees;
     entity product as projection on master.product;
     entity bpaddress as projection on master.address;
     @Capabilities : { Deletable:false }
